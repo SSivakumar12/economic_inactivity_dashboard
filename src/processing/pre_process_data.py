@@ -12,7 +12,15 @@ FILE_PATH = os.path.join(os.getcwd(), 'src/data/')
 
 
 def load_and_transform_dataframe(filename: str, sheet_name: str) -> pd.DataFrame:
-
+    """
+    takes a given file and performs ETL ready for data analysis
+    parameters
+    ---------
+    filename: str
+        the particular excel file that is to be read
+    sheet_name: str
+        the particular sheet in the excel spreadsheet to read
+    """
 
     data: pd.DataFrame = pd.read_excel(filename, 
                         sheet_name=sheet_name,
@@ -27,7 +35,9 @@ def load_and_transform_dataframe(filename: str, sheet_name: str) -> pd.DataFrame
     return data
 
 def extract_most_recent_data() -> str:
-    print(os.listdir())
+    """
+    extracts the most recent data file to produce the data visualisations on
+    """
     data_dir = sorted(
         {f'{FILE_PATH}{x}':datetime.datetime.fromtimestamp(os.path.getmtime(f'{FILE_PATH}{x}')) 
          for x in os.listdir(FILE_PATH) if re.match(FILE_PATH_PATTERN, x)}.items(),

@@ -29,9 +29,7 @@ def total_economic_activty_overtime() -> go.Figure:
 
 
 def breakdown_reason_of_economic_inactivity() -> go.Figure:
-    """
-    TODO: add
-    """
+
     labels: typing.Dict[str, str] = {
     "xaxis_title": "Date", 
     "yaxis_title": "Count of economic inactivity",

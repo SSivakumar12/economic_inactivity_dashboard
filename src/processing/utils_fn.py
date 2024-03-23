@@ -71,6 +71,14 @@ def filter_out_unwanted_rows(df: pd.DataFrame) -> pd.DataFrame:
 def transform_dataframe_for_analysis(col_headers: typing.List[str], removed_noise_df: pd.DataFrame) -> pd.DataFrame:
   """
   using the relevant headers from the original dataframe and adds them to the dataframe that has been initally cleaned
+
+  parameters
+  ----------
+  col_headers: List[str]
+    a list of column headers of the dataframe
+
+  removed_noise_df: pd.DataFrame
+    a dataframe which was has been partially cleaned and is subsequently cleaned within this functions  
   """
   col_headers[0] = 'date'
   removed_noise_df.columns = col_headers
