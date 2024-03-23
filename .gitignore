@@ -1,0 +1,4 @@
+# ignore everything within this directory
+**/__pycache__
+**/.pytest_cache
+**/.vscode
