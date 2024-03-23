@@ -5,3 +5,4 @@
 - directory structure
 - running tests (pytest)
 - issues to resolve/things I would like to do.
+- explain deployment
