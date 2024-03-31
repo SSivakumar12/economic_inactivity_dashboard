@@ -1,5 +1,4 @@
 import pytest
-import re
 import datetime
 import pandas as pd
 from typing import Union

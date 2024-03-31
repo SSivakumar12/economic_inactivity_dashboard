@@ -1,7 +1,9 @@
 # TODO ensure correct version numbers for packages
+# Werkzeug/Flask is pinned so that they are compatible with each other
 
 Flask==2.2.2
 plotly==5.6.0
 pandas==1.3.3
 pytest==7.4.3
 pytest-mock==3.14.0
+Werkzeug==2.2.2

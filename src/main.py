@@ -3,12 +3,11 @@ import plotly.graph_objects as go
 
 from flask import Flask, render_template, redirect, url_for, request
 
-from processing.pre_process_data import (extract_most_recent_data,
-                              FILE_PATH_PATTERN)
+from .processing.pre_process_data import (extract_most_recent_data,
+                                         FILE_PATH_PATTERN)
 
-from processing.plotly_visuals import (total_economic_activty_overtime,
-                            breakdown_reason_of_economic_inactivity
-                            )
+from .processing.plotly_visuals import (total_economic_activty_overtime,
+                                       breakdown_reason_of_economic_inactivity)
 
 
 app = Flask(__name__)
@@ -28,7 +27,9 @@ def route_trend_analysis():
 
 @app.route('/trend_analysis')
 def trend_analysis():
-    return render_template('trend_analysis.html')
+    return render_template('trend_analysis.html',
+                           plot=total_economic_activty_overtime().to_html(full_html=False), 
+                           plot2=breakdown_reason_of_economic_inactivity().to_html(full_html=False))
 
 
 

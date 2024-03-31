@@ -1,6 +1,8 @@
 # fixtures that are re-used in multiple tests.
+import typing
 import pytest
 import pandas as pd
+import plotly.graph_objects as go
 
 
 @pytest.fixture
