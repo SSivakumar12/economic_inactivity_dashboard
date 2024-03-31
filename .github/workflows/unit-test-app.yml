@@ -26,6 +26,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
+        python3 -m pip install xlrd
         if [ -f requirement.txt ]; then pip install -r requirement.txt; fi
     - name: Test with pytest
       run: |

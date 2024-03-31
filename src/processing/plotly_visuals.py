@@ -9,6 +9,8 @@ from .pre_process_data import (extract_most_recent_data,
 
 RECENT_FILE_PATH: str = extract_most_recent_data()
 DATA: pd.DataFrame = load_and_transform_dataframe(RECENT_FILE_PATH, 'People')
+MEN_DATA: pd.DataFrame = load_and_transform_dataframe(RECENT_FILE_PATH, 'Men')
+WOMEN_DATA: pd.DataFrame = load_and_transform_dataframe(RECENT_FILE_PATH, 'Women')
 MARKER_COLOURS: typing.List[str] = ['#206095', '#27a0cc', '#003c57', '#118c7b', 
                                     '#a8bd3a', '#871a5b', '#f66068', '#746cb1', 
                                     '#22d0b6']
