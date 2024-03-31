@@ -21,28 +21,28 @@ def index():
     return render_template('index.html', recent_date=date_pattern)
 
 
-@app.route('/route_trend_analysis')
-def route_trend_analysis():
-    return redirect(url_for('trend_analysis'))
+# @app.route('/route_trend_analysis')
+# def route_trend_analysis():
+#     return redirect(url_for('trend_analysis'))
 
-@app.route('/trend_analysis')
-def trend_analysis():
-    return render_template('trend_analysis.html',
-                           plot=total_economic_activty_overtime().to_html(full_html=False), 
-                           plot2=breakdown_reason_of_economic_inactivity().to_html(full_html=False))
+# @app.route('/trend_analysis')
+# def trend_analysis():
+#     return render_template('trend_analysis.html',
+#                            plot=total_economic_activty_overtime().to_html(full_html=False), 
+#                            plot2=breakdown_reason_of_economic_inactivity().to_html(full_html=False))
 
 
 
-@app.route('/redirect_gender_analysis')
-def route_gender_breakdown():
-    return redirect(url_for('gender_breakdown_analysis'))
+# @app.route('/redirect_gender_analysis')
+# def route_gender_breakdown():
+#     return redirect(url_for('gender_breakdown_analysis'))
 
-@app.route('/gender_analysis')
-def gender_breakdown_analysis():
+# @app.route('/gender_analysis')
+# def gender_breakdown_analysis():
 
-    return render_template('gender_breakdown.html',
-                           plot=total_economic_activty_overtime().to_html(full_html=False), 
-                           plot2=total_economic_activty_overtime().to_html(full_html=False))
+#     return render_template('gender_breakdown.html',
+#                            plot=total_economic_activty_overtime().to_html(full_html=False), 
+#                            plot2=total_economic_activty_overtime().to_html(full_html=False))
 
 
 
