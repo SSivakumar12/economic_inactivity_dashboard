@@ -72,5 +72,5 @@ def gender_breakdown_analysis():
 #   return render_template('form.html')
 
 
-if __name__ == '__main__':
-    app.run()
+# if __name__ == '__main__':
+#     app.run()
