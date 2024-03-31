@@ -1,0 +1,6 @@
+{
+    "name": "economic inactivity dashboard",
+    "description": "This app shows trends in economic inactivity within the UK overtime.",
+    "keywords": ["Python", "HTML5"],
+    "image": "heroku/python"
+}
