@@ -1,6 +1,6 @@
 # Economic Inactivity Dashboard
 
-This repository contains the dashboard which gives insights into economic inactivity over time. 
+This repository contains the dashboard which gives insights into economic inactivity over time. It is also hosted online through this [link](https://economic-inactivity-uk-2a720dbd86e4.herokuapp.com/)
 
 ## directory structure
 - `.github/`: contains workflows for automated unit testing.

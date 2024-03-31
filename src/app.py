@@ -11,8 +11,7 @@ from processing.pre_process_data import (extract_most_recent_data,
 from processing.plotly_visuals import (total_economic_activty_overtime,
                                        breakdown_reason_of_economic_inactivity)
 
-# import sys
-# sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 app = Flask(__name__)
 
 
