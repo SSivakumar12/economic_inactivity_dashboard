@@ -20,6 +20,10 @@ def load_and_transform_dataframe(filename: str, sheet_name: str) -> pd.DataFrame
         the particular excel file that is to be read
     sheet_name: str
         the particular sheet in the excel spreadsheet to read
+
+    returns
+    -------
+    pd.DataFrame: a cleaned dataframe which is ready to visualise
     """
 
     data: pd.DataFrame = pd.read_excel(filename, 
@@ -36,7 +40,12 @@ def load_and_transform_dataframe(filename: str, sheet_name: str) -> pd.DataFrame
 
 def extract_most_recent_data() -> str:
     """
-    extracts the most recent data file to produce the data visualisations on
+    extracts the most recent data file to produce the data visualisations 
+    and update the publication links
+    
+    returns
+    ------
+    str: the relative file path of the data to carry out ETL on.
     """
     data_dir = sorted(
         {f'{FILE_PATH}{x}':datetime.datetime.fromtimestamp(os.path.getmtime(f'{FILE_PATH}{x}')) 

@@ -3,10 +3,34 @@
 
 {% block content %}
     <!-- Add specific content for the home page here -->
-    <p> Last Updated: {{ recent_date }}</p>
+    <p> Last Updated: {{ recent_date }}.</p>
+    <h2>Background </h2>
     <p> This dashboard explores economic inactivity in the UK over the last three decades, utilising data from the Labour Force Survey. 
-        It unveils inactivity rates by reason (e.g., retirement, ill health) and analyzes gender disparities.  
+        It unveils inactivity rates by reason (e.g., retirement, ill health) and analyses gender disparities.  
         The latest quarter's data provides a current snapshot of this trend.</p>
-  
+    
+    <h2>Dataset issues</h2>
+    <p>There are some considerations that should be noted about the dataset.</p>
+    <ul>
+        <li>change in weighting from September 2022 resulting in step change in counts.</li>
+        <li>there sample size of discouraged workers is small, therefore an estimate is used. </li>
+    </ul>
+    <p>A change of contrast highlights the start of such data problems in all time-series plots</p>
+    
+    <h2> Further Reading</h2>
+    <p>Below there are some ONS related publications which attempt to justify trends within the data</p>
+    <ul>
+        <li>
+            <a href="https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/uklabourmarket/{{ recent_date }}">Labour Market Overview</a>
+        
+        </li>
+        <li>
+            <a href="https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/employmentintheuk/{{ recent_date }}">Employment in the UK</a>
+        </li>
+        <li>
+            <a href="https://www.ons.gov.uk/employmentandlabourmarket/peoplenotinwork/economicinactivity/articles/risingillhealthandeconomicinactivitybecauseoflongtermsicknessuk/2019to2023">
+                Rising ill-health and economic inactivity because of long-term sickness</a>
+        </li>
+    </ul>
 {% endblock %}
 
