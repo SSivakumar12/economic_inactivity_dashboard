@@ -94,7 +94,9 @@ def gender_breakdown_analysis():
 
 
 if __name__ == '__main__':
-    # port = int(os.environ.get("PORT", 5000))
-    # app.run(host="0.0.0.0", port=port)
+    # REMEMBER IF YOU AND SENDING TO PRODUCTION COMMENT OUT LINE 102
+    # IF YOU ARE IN DEV COMMENT OUT 99/100
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
 
-    app.run(debug=True)
+    # app.run(debug=True)
