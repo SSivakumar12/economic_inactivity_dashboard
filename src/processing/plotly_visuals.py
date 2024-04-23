@@ -1,5 +1,6 @@
 import typing
 import datetime
+import functools
 import pandas as pd
 import plotly.graph_objects as go
 
@@ -12,10 +13,9 @@ from .base_plotly_visuals import (add_colour_contrast,
 
 RECENT_FILE_PATH: str = extract_most_recent_data()
 DATA: pd.DataFrame = load_and_transform_dataframe(RECENT_FILE_PATH, 'People')
-MEN_DATA: pd.DataFrame = load_and_transform_dataframe(RECENT_FILE_PATH, 'Men')
-WOMEN_DATA: pd.DataFrame = load_and_transform_dataframe(RECENT_FILE_PATH, 'Women')
 
 
+@functools.lru_cache
 def total_economic_activty_overtime(data: pd.DataFrame=DATA) -> go.Figure:
 
     labels: typing.Dict[str, str] = {
@@ -32,7 +32,7 @@ def total_economic_activty_overtime(data: pd.DataFrame=DATA) -> go.Figure:
 
     return fig
 
-
+@functools.lru_cache
 def breakdown_reason_of_economic_inactivity(
         title: str,
         column: str,
@@ -54,7 +54,7 @@ def breakdown_reason_of_economic_inactivity(
     fig = add_colour_contrast(fig, data_window, 0, column)
     return fig
 
-
+@functools.lru_cache
 def economic_inactivity_wanting_a_job(data: pd.DataFrame=DATA) -> go.Figure:
     labels: typing.Dict = {
     "xaxis": {"title": "Year", "showgrid":False},
@@ -76,8 +76,9 @@ def economic_inactivity_wanting_a_job(data: pd.DataFrame=DATA) -> go.Figure:
     #                           int(max(job_desire_breakdown['Does not want job (thousands)']) + 500_000))
     return fig
 
-def breakdown_of_economic_inactivity_by_gender(men_data:pd.DataFrame=MEN_DATA,
-                                               women_data: pd.DataFrame=WOMEN_DATA
+@functools.lru_cache
+def breakdown_of_economic_inactivity_by_gender(men_data:pd.DataFrame,
+                                               women_data: pd.DataFrame
                                                ) -> go.Figure:
     labels: typing.Dict = {
         "xaxis": {"title": "Year", "showgrid": False},

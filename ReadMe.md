@@ -12,7 +12,7 @@ This repository contains the dashboard which gives insights into economic inacti
 If you would like to run this code locally, follow the steps below:
 - create a virtual environment by running `python -m venv venv`
 - enter the environment (depending on what OS you have this may be different, Windows OS is `venv\Scripts\activate`).
-- run `pip install -r requirement.txt` and subsequently `python3 -m pip install xlrd` to ensure you have the necessary packages in the correct version to replicate the project work.
+- run `pip install -r requirements.txt` and subsequently `python3 -m pip install xlrd` to ensure you have the necessary packages in the correct version to replicate the project work.
 - finally to run locally while also tests pass run `python -m src.main` (This ensures that Python recognizes the package structure correctly and also ensures the unit test passes).
 
 **NOTE**: I recommend viewing the output in Microsoft Edge since the HTML templates designed by ONS seem to be optimised for Edge.

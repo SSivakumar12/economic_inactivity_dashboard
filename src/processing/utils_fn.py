@@ -1,8 +1,9 @@
 import re
-# import requests
-# import io
+import requests
+import io
 import typing
 import datetime
+import functools
 import pandas as pd
 
 DATE_PATTERN: str =  r'\b\d{4}\b'
@@ -91,7 +92,7 @@ def transform_dataframe_for_analysis(col_headers: typing.List[str], removed_nois
 
 
 ## Alternative approach for more automated approach and update the dashbooard to point to this output
-
+# @functools.lru_cache
 # def extract_load_transform_dataframe() -> typing.Union[dict[str, pd.DataFrame], ValueError]:
 #   output = requests.get('https://www.ons.gov.uk/file?uri=/employmentandlabourmarket/peoplenotinwork/economicinactivity/datasets/economicinactivitybyreasonnotseasonallyadjustedinac01nsa/current/inac01nsamar2024.xls')
 #   if output.status_code != 200:
@@ -105,7 +106,8 @@ def transform_dataframe_for_analysis(col_headers: typing.List[str], removed_nois
 #     for sheet_name, dataframe in df.items():
 #        cols = dataframe.loc[0]
 #        dataframe = dataframe.loc[4:, :]
-#        df[sheet_name] = transform_dataframe_for_analysis(cols, dataframe).loc[:, :'Wants a job (thousands)'].dropna()
+#        dataframe = transform_dataframe_for_analysis(cols, dataframe).loc[:, :'Wants a job (thousands)'].dropna()
+#        dataframe.loc[:, [x for x in dataframe.columns if x != 'date']] =\
+#         dataframe.loc[:, [x for x in dataframe.columns if x != 'date']].fillna(0).apply(int)
+#        df[sheet_name] = dataframe
 #     return df
-    
-##

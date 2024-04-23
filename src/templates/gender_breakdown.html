@@ -1,7 +1,16 @@
 <!-- home.html -->
 {% extends 'base.html' %}
+
 {% block content %}
-<div>{{plot | safe}}</div>
+<div class="ons-field">
+    <label class="ons-label" for="select-example">Gender</label>
+    <select id="select-example" name="select" class="ons-input ons-input--select">
+      <option value="" selected disabled>Select a Gender</option>
+      <option value="male">Male</option>
+      <option value="female"> Female</option>
+    </select>
+</div>
+<!-- <div>{{plot | safe}}</div>
 <div>{{plot2 | safe}} </div>
-<div>{{plot3 | safe}}</div>
+<div>{{plot3 | safe}}</div> -->
 {% endblock %}

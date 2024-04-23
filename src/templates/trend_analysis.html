@@ -1,6 +1,45 @@
 <!-- home.html -->
 {% extends 'base.html' %}
 {% block content %}
+
+<input type="range" min="1993" max="2024" value="1993" id="slider">
+<span id="slider-value">1993</span>
+
+<!-- Plotly Visuals -->
+<div id="plot1"></div>
+<div id="plot2"></div>
+
+<!-- JavaScript -->
+<script>
+// Slider
+var slider = document.getElementById("slider");
+var sliderValue = document.getElementById("slider-value");
+
+slider.oninput = function() {
+  sliderValue.innerHTML = this.value;
+  // Send slider value to Flask backend
+  updatePlotlyVisuals(this.value);
+};
+
+// Function to update Plotly visuals
+function updatePlotlyVisuals(value) {
+  // Make a GET request to Flask backend with the slider value
+  fetch(`/update_visuals?value=${value}`)
+    .then(response => response.json())
+    .then(data => {
+      // Update Plotly visuals with new data
+      Plotly.newPlot('plot1', data.plot1.data, data.plot1.layout);
+      Plotly.newPlot('plot2', data.plot2.data, data.plot2.layout);
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+// Initial update of Plotly visuals
+updatePlotlyVisuals(5);  // Initial value of the slider
+
+</script>
+
+
 <div>{{plot | safe}}</div>
 <div>{{plot2 | safe}} </div>
 <div>{{plot3 | safe}}</div>
