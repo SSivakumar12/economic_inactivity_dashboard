@@ -1,7 +1,19 @@
 <!-- home.html -->
 {% extends 'base.html' %}
 {% block content %}
+<div> 
+    <p>Proportion of economic activity as of {{date_pattern}} is 74.5% [1]</p> 
+</div>
+
 <div>{{plot | safe}}</div>
-<div>{{plot2 | safe}} </div>
-<div>{{plot3 | safe}}</div>
+<div>
+    <div> References: </div>
+    <div> 
+        <ol>
+            <li><a href="https://commonslibrary.parliament.uk/research-briefings/cbp-9366/">UK Labour Market Statistics</a></li>
+            <li>Tea</li>
+            <li>Milk</li>
+        </ol>
+    </div>
+</div>
 {% endblock %}

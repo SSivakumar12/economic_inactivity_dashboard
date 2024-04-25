@@ -12,14 +12,22 @@ MARKER_COLOURS: typing.List[str] = ['#206095', '#27a0cc', '#003c57', '#118c7b',
                                     '#22d0b6']
 
 
-def create_time_series_visual(df: pd.DataFrame,
+def create_time_series_visual(fig: go.Figure,
+                              df: pd.DataFrame,
                               column: typing.List[str],
-                              labels: typing.Dict) -> go.Figure:
-    fig = go.Figure()
+                              labels: typing.Union[typing.Dict, None] = None,
+                              position: typing.Union[tuple[int, int], None] = None) -> go.Figure:
+
     for colour, column in zip(MARKER_COLOURS, column):
-        fig.add_trace(go.Scatter(x=df['date'], y=df[column], 
-                                 marker_color=colour, name=column))
-    fig.update_layout(**labels)
+        if position is not None:
+            fig.add_trace(go.Scatter(x=df['date'], y=df[column], 
+                                     marker_color=colour, name=column))
+        else:
+            fig.add_trace(go.Scatter(x=df['date'], y=df[column], 
+                                     marker_color=colour, name=column),
+                          row=position[0], col=position[1])
+    if labels is not None:
+        fig.update_layout(**labels)
     return fig
 
 

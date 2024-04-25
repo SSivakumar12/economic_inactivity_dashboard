@@ -67,7 +67,8 @@ def economic_inactivity_wanting_a_job(data: pd.DataFrame=DATA) -> go.Figure:
         job_desire_breakdown[job_desire_breakdown['date'] >= datetime.date(1993, 5, 1)]
     columns = [x for x in job_desire_breakdown.columns if x != 'date']
 
-    fig = create_time_series_visual(df=job_desire_breakdown,
+    fig = create_time_series_visual(fig=go.Figure(),
+                                    df=job_desire_breakdown,
                                     column=columns,
                                     labels=labels)
     # fig = add_colour_contrast(fig, 

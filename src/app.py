@@ -9,21 +9,18 @@ from flask import Flask, render_template, redirect, url_for, request
 
 from processing.pre_process_data import extract_most_recent_data, FILE_PATH_PATTERN
 
-from processing.plotly_visuals import (total_economic_activty_overtime,
-                                       breakdown_reason_of_economic_inactivity,
-                                       economic_inactivity_wanting_a_job,
-                                       breakdown_of_economic_inactivity_by_gender,
-                                       WOMEN_DATA, MEN_DATA)
+from processing.summary_visuals import visualise_summary_stats
+from processing.gender_breakdown_visuals import visualise_gender_breakdown
 
 
 app = Flask(__name__)
-BASE_TITLE = "Breakdown of reasons for economic inactivity overtime"
 
+date_pattern =\
+    pd.read_excel(extract_most_recent_data(), 'People').iloc[0, 1].strftime("%B%Y")
 
 @app.route('/')
 def index():
-    date_pattern =\
-        pd.read_excel(extract_most_recent_data(), 'People').iloc[0, 1].strftime("%B%Y")
+
     return render_template('index.html', recent_date=date_pattern)
 
 
@@ -35,13 +32,8 @@ def route_trend_analysis():
 def trend_analysis():
     return render_template(
         'trend_analysis.html',
-        plot=total_economic_activty_overtime().to_html(full_html=False), 
-        plot2=breakdown_reason_of_economic_inactivity(title=BASE_TITLE,
-                                                      column="Long-term sick").to_html(full_html=False),
-        plot3=economic_inactivity_wanting_a_job().to_html(full_html=False)
-        )
-
-
+        plot=visualise_summary_stats().to_html(full_html=False),
+        date_pattern="Tuesday, 16 April, 2024")
 
 @app.route('/redirect_gender_analysis')
 def route_gender_breakdown():
@@ -49,26 +41,10 @@ def route_gender_breakdown():
 
 @app.route('/gender_analysis')
 def gender_breakdown_analysis():
-    men_title = f'{BASE_TITLE} in men'
-    women_title = f'{BASE_TITLE} in women'
     return render_template(
         'gender_breakdown.html',
-        plot=breakdown_of_economic_inactivity_by_gender().to_html(full_html=False), 
-        plot2=breakdown_reason_of_economic_inactivity(title=men_title,
-                                                      column="Long-term sick",
-                                                      data=MEN_DATA).to_html(full_html=False),
-        plot3=breakdown_reason_of_economic_inactivity(title=women_title,
-                                                      column="Looking after family / home",
-                                                      data=WOMEN_DATA).to_html(full_html=False)
-        )                                              
+        plot=visualise_gender_breakdown().to_html(full_html=False))                                              
                                                       
-
-
-
-
-
-
-
 
 
 #########################
